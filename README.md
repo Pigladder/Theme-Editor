@@ -1,7 +1,59 @@
-# Tauri + Vue + TypeScript
+# 主题编辑器 (Theme Editor)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+一款轻量级、可换主题的文本编辑器，基于 **Tauri** + **Vue 3** 构建。
 
-## Recommended IDE Setup
+## 功能特性
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- 🎨 **16 款精美主题** - 暗色、亮色、节日、自然、赛博朋克等多种风格
+- 💾 **设置持久化** - 自动记住主题选择和字体大小
+- 🔢 **行号显示** - 实时显示行号，当前行高亮
+- 📐 **字体调节** - 滑块控制，支持快捷键（Ctrl +/-）
+- 📁 **文件操作** - 打开和保存文本文件
+- ⚡ **极速轻量** - 仅约 10MB，原生性能
+
+## 主题预览
+
+| 主题 | 风格 |
+|------|------|
+| Dark / Light | 经典明暗配色 |
+| Purple Dream | 梦幻紫色调 |
+| 亮红 / 暗红 | 热情红色系 |
+| 亮紫 / 暗紫 | 优雅紫色调 |
+| 高对比度 | 黑白分明，护眼 |
+| Windows 7 | 复古经典风格 |
+| 🧧 新年主题 | 红金喜庆配色 |
+| 🌿 薄荷清新 | 清爽绿色调 |
+| 🌊 深海蓝 | 深邃海洋蓝 |
+| 🌅 日落橙 | 温暖橙色调 |
+| 🌸 樱花粉 | 浪漫粉色系 |
+| 🤖 赛博朋克 | 霓虹科技感 |
+| ☕ 咖啡时光 | 复古咖啡棕 |
+| 🌌 极光 | 绚丽渐变色 |
+| 🌲 森林绿 | 自然深绿色 |
+
+## 下载安装
+
+| 版本 | 说明 | 下载 |
+|------|------|------|
+| 便携版 | 单文件，无需安装 | [my-theme-editor.exe](../../releases) |
+| 安装版 | 含卸载程序，创建快捷方式 | [Setup.exe](../../releases) |
+
+&gt; 系统要求：Windows 10/11，64位
+
+## 技术栈
+
+- **前端**：Vue 3 + TypeScript
+- **后端**：Rust (Tauri)
+- **样式**：CSS 变量动态主题
+
+## 开发指南
+
+```bash
+# 安装依赖
+npm install
+
+# 开发运行
+npm run tauri dev
+
+# 打包构建
+npm run tauri build
