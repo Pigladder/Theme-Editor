@@ -1,8 +1,8 @@
 {
-  "$schema": "https://schema.tauri.app/config/2",
-  "productName": "my-theme-editor",
-  "version": "0.1.0",
-  "identifier": "com.tauri-app.my-theme-editor",
+  "$schema": "https://schema.tauri.app/config/2.0.0-rc",
+  "productName": "Theme Editor",
+  "version": "1.0.0",
+  "identifier": "com.yourname.theme-editor",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -11,20 +11,17 @@
   },
   "app": {
     "windows": [
-  {
-    "fullscreen": false,
-    "resizable": true,
-    "title": "Theme Editor",
-    "width": 900,
-    "height": 600,
-    "minWidth": 600,
-    "minHeight": 400,
-    "decorations": false,
-    "transparent": true,
-    "center": true,
-    "dragDropEnabled": true
-  }
-],
+      {
+        "title": "Theme Editor",
+        "width": 900,
+        "height": 600,
+        "minWidth": 600,
+        "minHeight": 400,
+        "center": true,
+        "decorations": false,
+        "dragDropEnabled": true
+      }
+    ],
     "security": {
       "csp": null
     }
@@ -38,6 +35,37 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      },
+      "wix": {
+        "language": "zh-CN"
+      },
+      "nsis": {
+        "displayLanguageSelector": true,
+        "languages": ["SimpChinese"]
+      }
+    },
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "10.13",
+      "signingIdentity": null,
+      "entitlements": null
+    },
+    "linux": {
+      "deb": {
+        "depends": ["libgtk-3-0", "libwebkit2gtk-4.0-37"]
+      },
+      "appimage": {
+        "bundleMediaFramework": false
+      }
+    },
+    "category": "Tool",
+    "copyright": "© 2026 Uased",
+    "publisher": "uased",
+    "shortDescription": "轻量级主题文本编辑器",
+    "longDescription": "Theme Editor 是一款基于 Rust + Vue 开发的轻量级文本编辑器，支持 16+ 种主题切换、实时字体调节、查找替换、行号显示等功能。"
   }
 }

@@ -1,27 +1,24 @@
 [package]
-name = "my-theme-editor"
-version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+name = "theme-editor"
+version = "1.0.0"
+description = "轻量级主题文本编辑器"
+authors = ["Uased & Pigladder"]
+license = "MIT"
+repository = "https://github.com/Pigladder/Theme-Editor"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+rust-version = "1.77.2"
 
 [lib]
-# The `_lib` suffix may seem redundant but it is necessary
-# to make the lib name unique and wouldn't conflict with the bin name.
-# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
-name = "my_theme_editor_lib"
+name = "theme_editor_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2", features = [] }
+tauri-build = { version = "2.0.0-rc", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
-tauri-plugin-opener = "2"
+tauri = { version = "2.0.0-rc", features = [] }
+tauri-plugin-shell = "2.0.0-rc"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-tauri-plugin-dialog = "2"
-tauri-plugin-fs = "2"
-
+tauri-plugin-dialog = "2.0.0-rc"
+tauri-plugin-fs = "2.0.0-rc"
