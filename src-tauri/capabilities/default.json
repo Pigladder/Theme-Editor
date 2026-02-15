@@ -15,6 +15,9 @@
     "fs:allow-read-dir",
     "fs:allow-mkdir",
     "fs:allow-exists",
-    "fs:scope-appdata-recursive"
+    "fs:scope-appdata-recursive",
+    "dialog:allow-ask",
+    "core:event:allow-emit",
+    "core:event:allow-listen"
   ]
 }
