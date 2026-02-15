@@ -1,0 +1,81 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'windows-latest'
+            args: ''
+            name: 'windows'
+          - platform: 'macos-latest'
+            args: '--target universal-apple-darwin'
+            name: 'macos'
+          - platform: 'ubuntu-22.04'
+            args: ''
+            name: 'linux'
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Rust
+        uses: dtolnay/rust-action@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install dependencies (Ubuntu)
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      - name: Build Tauri
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: 'Theme Editor ${{ github.ref_name }}'
+          releaseBody: |
+            ## 下载安装包
+            
+            ### Windows
+            - `.msi` - 标准安装包（推荐）
+            - `-setup.exe` - 安装程序
+            
+            ### macOS
+            - `.dmg` - 通用版（支持 Intel 和 Apple Silicon）
+            
+            ### Linux
+            - `.AppImage` - 便携版（无需安装，双击运行）
+            - `.deb` - Debian/Ubuntu 安装包
+            
+            ## 功能特性
+            - 16+ 种主题切换
+            - 实时字体调节
+            - 查找替换（Ctrl+F / Ctrl+H）
+            - 行号显示
+            - 拖拽打开文件
+          releaseDraft: true
+          prerelease: false
+          args: ${{ matrix.args }}
